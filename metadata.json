@@ -1,0 +1,6 @@
+{
+  "name": "Dojang Management System",
+  "description": "Multi-tenant Taekwondo dojang management platform for Super Admins, Masters, and Branch Managers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

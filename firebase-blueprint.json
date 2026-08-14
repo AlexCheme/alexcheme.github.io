@@ -1,0 +1,145 @@
+{
+  "entities": {
+    "tenants": {
+      "title": "Dojang Tenants",
+      "description": "Registered martial arts dojang organizations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "masterName": { "type": "string" },
+        "masterId": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "branches": {
+      "title": "Branches",
+      "description": "Dojang branches and locations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tenantId": { "type": "string" },
+        "name": { "type": "string" }
+      },
+      "required": ["id", "tenantId", "name"]
+    },
+    "users": {
+      "title": "User Accounts",
+      "description": "Admins, Masters, Branch Managers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "tenantId": { "type": "string" }
+      },
+      "required": ["id", "email", "name", "role"]
+    },
+    "students": {
+      "title": "Students",
+      "description": "Registered martial arts students",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tenantId": { "type": "string" },
+        "branchId": { "type": "string" },
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "beltRank": { "type": "string" },
+        "status": { "type": "string" },
+        "registrationDate": { "type": "string" }
+      },
+      "required": ["id", "tenantId", "firstName", "lastName"]
+    },
+    "attendance": {
+      "title": "Attendance Records",
+      "description": "Daily attendance logs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tenantId": { "type": "string" },
+        "branchId": { "type": "string" },
+        "studentId": { "type": "string" },
+        "date": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "tenantId", "studentId", "date", "status"]
+    },
+    "bills": {
+      "title": "Billing & Invoices",
+      "description": "Fee and tuition invoices",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tenantId": { "type": "string" },
+        "branchId": { "type": "string" },
+        "studentId": { "type": "string" },
+        "amount": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "tenantId", "studentId", "amount", "status"]
+    },
+    "inventory": {
+      "title": "Inventory Items",
+      "description": "Equipment and merchandise items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tenantId": { "type": "string" },
+        "name": { "type": "string" },
+        "currentStock": { "type": "number" }
+      },
+      "required": ["id", "tenantId", "name"]
+    },
+    "expenses": {
+      "title": "Expenses",
+      "description": "Dojang and branch expenses",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tenantId": { "type": "string" },
+        "name": { "type": "string" },
+        "amount": { "type": "number" }
+      },
+      "required": ["id", "tenantId", "name", "amount"]
+    },
+    "grading_tests": {
+      "title": "Grading Tests",
+      "description": "Belt promotion tests and exams",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tenantId": { "type": "string" },
+        "testName": { "type": "string" }
+      },
+      "required": ["id", "tenantId", "testName"]
+    },
+    "grading_candidates": {
+      "title": "Grading Candidates",
+      "description": "Candidates registered for belt grading tests",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "testId": { "type": "string" },
+        "studentId": { "type": "string" }
+      },
+      "required": ["id", "testId", "studentId"]
+    },
+    "audit_logs": {
+      "title": "Audit Logs",
+      "description": "System activity logs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "action": { "type": "string" }
+      },
+      "required": ["id", "timestamp", "action"]
+    }
+  }
+}

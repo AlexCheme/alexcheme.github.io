@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dojang Management System</title>
+    <script>
+      (function() {
+        function isCrossOriginError(errStr) {
+          if (!errStr) return false;
+          var s = String(errStr).toLowerCase();
+          return (
+            s.includes('origin') ||
+            s.includes('location') ||
+            s.includes('blocked a frame') ||
+            s.includes('cross-origin') ||
+            s.includes('securityerror') ||
+            s.includes('failed to read')
+          );
+        }
+
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+          var errStr = String(msg) + ' ' + (error ? String(error.message || error) : '');
+          if (isCrossOriginError(errStr)) {
+            return true;
+          }
+          return false;
+        };
+
+        window.addEventListener('error', function(e) {
+          var errStr = (e.message || '') + ' ' + (e.error ? String(e.error.message || e.error) : '');
+          if (isCrossOriginError(errStr)) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (typeof e.stopImmediatePropagation === 'function') {
+              e.stopImmediatePropagation();
+            }
+          }
+        }, true);
+
+        window.addEventListener('unhandledrejection', function(e) {
+          var errStr = e.reason ? String(e.reason.message || e.reason) : '';
+          if (isCrossOriginError(errStr)) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (typeof e.stopImmediatePropagation === 'function') {
+              e.stopImmediatePropagation();
+            }
+          }
+        }, true);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
